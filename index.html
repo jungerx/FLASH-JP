@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JP</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+</head>
+<style>
+    body{
+        text-align: center;
+        background: navajowhite;
+    }
+    p{
+        font-size: 40px;
+    }
+    button{
+        background: #ccc;
+        border: none;
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+    p{
+        max-width: 360px;
+        border: 1px solid #009944;
+        margin: 0 auto;
+        padding: 10px ;
+        margin-top: 40px;
+        background: #fff;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<body>
+    <h1>Bảng chữ cái</h1>
+    <button class="click" id="nextButton">Click me</button>
+    <button class="click" id="resetButton">reset</button>
+    <p id="name"></p>
+
+    <!-- <h1>Từ Vựng</h1> -->
+    <!-- <button class="click" id="nextButton"></button> -->
+    <!-- <p id="name"></p> -->
+
+    <script>
+        const textRoman=[
+        'a','i','u','e','o'
+        ,'na','ni','nu','ne','no'
+        ,'sa','si','su','se','so'
+        ,'ta','chi','tsu','te','to'
+        ,'ka','ki','ku','ke','ko'
+    ]
+    let selectedWords = []; 
+    let completed = false; 
+
+    function getRandomElement(array) {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+    }
+
+    function isWordSelected(word) {
+        return selectedWords.includes(word);
+    }
+
+    const nextButton = document.getElementById('nextButton');
+    const resetButton = document.getElementById('resetButton');
+    const randomWordParagraph = document.getElementById('name');
+
+    nextButton.addEventListener('click', function() {
+        if (completed) {
+            randomWordParagraph.textContent = "Completed";
+            return;
+        }
+        let randomElement = getRandomElement(textRoman);
+        while (isWordSelected(randomElement)) {
+            randomElement = getRandomElement(textRoman);
+        }
+        selectedWords.push(randomElement);
+        randomWordParagraph.textContent = randomElement;
+        if (selectedWords.length === textRoman.length) {
+            completed = true;
+        }
+    });
+    resetButton.addEventListener('click', function() {
+        selectedWords = []; 
+        completed = false; 
+        randomWordParagraph.textContent = ""; 
+    });
+    </script>
+</body>
+</html>
