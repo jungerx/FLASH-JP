@@ -44,6 +44,10 @@
     <button class="click" id="resetButton1">reset</button>
     <p id="name1"></p>
    
+    <h1>Từ vựng JP</h1>
+    <button class="click" id="nextButton2">Click me</button>
+    <button class="click" id="resetButton2">reset</button>
+    <p id="name2"></p>
 
     <script>
         const textRoman=[
@@ -69,6 +73,7 @@
         'chú','ông','chào buổi sáng','chào buổi trưa','chào buổi tối',
         'chúc ngủ ngon (o yu su mi na sai)','tạm biệt (sa yo u na ra)','cám ơn','xin lỗi (su mi ma sen)','làm phiền anh/chị (o ne gai shi ma su)'
     ]
+
     
     let selectedWords = []; 
     let completed = false; 
@@ -143,6 +148,47 @@
         completed1 = false; 
         randomWordParagraph1.textContent = ""; 
     });
+    const textRoman2=[
+        'おはよう','こんにちは','こんばんは',
+        'おやすみなさい','さようなら',
+    ]
+    let selectedWords2 = []; 
+    let completed2 = false; 
+
+    function getRandomElement2(array) {
+        const randomIndex2 = Math.floor(Math.random() * array.length);
+        return array[randomIndex2];
+    }
+
+    function isWordSelected2(word) {
+        return selectedWords2.includes(word);
+    }
+
+    const nextButton2 = document.getElementById('nextButton2');
+    const resetButton2 = document.getElementById('resetButton2');
+    const randomWordParagraph2 = document.getElementById('name2');
+
+    nextButton2.addEventListener('click', function() {
+        if (completed2) {
+            randomWordParagraph2.textContent = "Completed";
+            return;
+        }
+        let randomElement2 = getRandomElement(textRoman2);
+        while (isWordSelected2(randomElement2)) {
+            randomElement2 = getRandomElement(textRoman2);
+        }
+        selectedWords2.push(randomElement2);
+        randomWordParagraph2.textContent = randomElement2;
+        if (selectedWords2.length === textRoman2.length) {
+            completed2 = true;
+        }
+    });
+    resetButton2.addEventListener('click', function() {
+        selectedWords2 = []; 
+        completed2 = false; 
+        randomWordParagraph2.textContent = ""; 
+    });
+    
     </script>
 </body>
 </html>
