@@ -39,9 +39,11 @@
     <button class="click" id="resetButton">reset</button>
     <p id="name"></p>
 
-    <!-- <h1>Từ Vựng</h1> -->
-    <!-- <button class="click" id="nextButton"></button> -->
-    <!-- <p id="name"></p> -->
+    <h1>Từ vựng</h1>
+    <button class="click" id="nextButton1">Click me</button>
+    <button class="click" id="resetButton1">reset</button>
+    <p id="name1"></p>
+   
 
     <script>
         const textRoman=[
@@ -60,7 +62,14 @@
         ,'da','zi(d)','zu(d)','de','do'
         ,'ba','bi','bu','be','bo'
         ,'pa','pi','pu','pe','po'
+        ,'0','1','2','3','4','5','6','7','8','9','10'
     ]
+    const textRoman1=[
+        'đôi giày','thịt','cá','cảm ơn','cái bàn','bà','cô',
+        'chú','ông','chào buổi sáng','chào buổi trưa','chào buổi tối',
+        'chúc ngủ ngon (o yu su mi na sai)','tạm biệt (sa yo u na ra)','cám ơn','xin lỗi (su mi ma sen)','làm phiền anh/chị (o ne gai shi ma su)'
+    ]
+    
     let selectedWords = []; 
     let completed = false; 
 
@@ -96,6 +105,43 @@
         selectedWords = []; 
         completed = false; 
         randomWordParagraph.textContent = ""; 
+    });
+
+    let selectedWords1 = []; 
+    let completed1 = false; 
+
+    function getRandomElement1(array) {
+        const randomIndex1 = Math.floor(Math.random() * array.length);
+        return array[randomIndex1];
+    }
+
+    function isWordSelected1(word) {
+        return selectedWords1.includes(word);
+    }
+
+    const nextButton1 = document.getElementById('nextButton1');
+    const resetButton1 = document.getElementById('resetButton1');
+    const randomWordParagraph1 = document.getElementById('name1');
+
+    nextButton1.addEventListener('click', function() {
+        if (completed1) {
+            randomWordParagraph1.textContent = "Completed";
+            return;
+        }
+        let randomElement1 = getRandomElement(textRoman1);
+        while (isWordSelected1(randomElement1)) {
+            randomElement1 = getRandomElement(textRoman1);
+        }
+        selectedWords1.push(randomElement1);
+        randomWordParagraph1.textContent = randomElement1;
+        if (selectedWords1.length === textRoman1.length) {
+            completed1 = true;
+        }
+    });
+    resetButton1.addEventListener('click', function() {
+        selectedWords1 = []; 
+        completed1 = false; 
+        randomWordParagraph1.textContent = ""; 
     });
     </script>
 </body>
