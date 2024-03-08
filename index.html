@@ -34,46 +34,65 @@
     }
 </style>
 <body>
-    <h1>Bảng chữ cái HIRAGANA</h1>
-    <button class="click" id="nextButton">Click me</button>
-    <button class="click" id="resetButton">reset</button>
-    <p id="name"></p>
-
-    <h1>Từ vựng</h1>
-    <button class="click" id="nextButton1">Click me</button>
-    <button class="click" id="resetButton1">reset</button>
-    <p id="name1"></p>
    
-    <h1>Từ vựng JP</h1>
+    <h1>Bảng chữ cái HIRAGANA</h1>
     <button class="click" id="nextButton2">Click me</button>
     <button class="click" id="resetButton2">reset</button>
     <p id="name2"></p>
 
+    <h1>Bảng chữ cái KATAKANA</h1>
+    <button class="click" id="nextButton1">Click me</button>
+    <button class="click" id="resetButton1">reset</button>
+    <p id="name1"></p>
+
+    <h1>Bảng chữ cái ROMANRI</h1>
+    <button class="click" id="nextButton">Click me</button>
+    <button class="click" id="resetButton">reset</button>
+    <p id="name"></p>
+    
     <script>
         const textRoman=[
         'a','i','u','e','o'
-        ,'na','ni','nu','ne','no'
+        ,'ka','ki','ku','ke','ko'
         ,'sa','si','su','se','so'
         ,'ta','chi','tsu','te','to'
-        ,'ka','ki','ku','ke','ko'
+        ,'na','ni','nu','ne','no'
         ,'ha','hi','fu','he','ho'
         ,'ma','mi','mu','me','mo'
         ,'ya','yu','yo'
         ,'ra','ri','ru','re','ro'
-        ,'wa','o-trợ-từ','n'
-        ,'ga','gi','gu','ge','go'
-        ,'za','zi','zu','ze','zo'
-        ,'da','zi(d)','zu(d)','de','do'
-        ,'ba','bi','bu','be','bo'
-        ,'pa','pi','pu','pe','po'
-        ,'0','1','2','3','4','5','6','7','8','9','10'
+        // ,'wa','ố','n'
+        // ,'ga','gi','gu','ge','go'
+        // ,'za','zi','zu','ze','zo'
+        // ,'da','zi(d)','zu(d)','de','do'
+        // ,'ba','bi','bu','be','bo'
+        // ,'pa','pi','pu','pe','po'
+        // ,'0','1','2','3','4','5','6','7','8','9','10'
     ]
     const textRoman1=[
-        'đôi giày','thịt','cá','cảm ơn','cái bàn','bà','cô',
-        'chú','ông','chào buổi sáng','chào buổi trưa','chào buổi tối',
-        'chúc ngủ ngon (o yu su mi na sai)','tạm biệt (sa yo u na ra)','cám ơn','xin lỗi (su mi ma sen)','làm phiền anh/chị (o ne gai shi ma su)'
+        'ア','イ','ウ','エ','オ',
+        'カ','キ','ク','ケ','コ',
+        'サ','シ','ス','セ','ソ',
+        'タ','チ','ツ','テ','ト',
+        'ナ','二','ヌ','ネ','ノ'
+        , 'ハ','ヒ','フ','ヘ','ホ'
+        , 'マ','ミ','ム','メ','モ'
+        , 'ヤ','ユ','ヨ',
+        , 'ラ','リ','ル','レ','ロ'
+        , 'ワ','ヲ','ン',
     ]
-
+    const textRoman2=[
+        'あ','い','う','え','お'
+        ,'か','き','く','け','こ'
+        ,'さ','し','す','せ','そ'
+        ,'た','ち','つ','て','と'
+        ,'な','に','ぬ','ね','の'
+        ,'は','ひ','ふ','へ','ほ'
+        ,'ま','み','む','め','も'
+        ,'や','ゆ','よ'
+        ,'ら','り','る','れ','ろ'
+        ,'わ','を','ん'
+    ]
     
     let selectedWords = []; 
     let completed = false; 
@@ -148,10 +167,7 @@
         completed1 = false; 
         randomWordParagraph1.textContent = ""; 
     });
-    const textRoman2=[
-        'おはよう','こんにちは','こんばんは',
-        'おやすみなさい','さようなら',
-    ]
+   
     let selectedWords2 = []; 
     let completed2 = false; 
 
