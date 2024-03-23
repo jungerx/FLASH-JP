@@ -50,6 +50,15 @@
     <button class="click" id="resetButton">reset</button>
     <p id="name"></p>
 
+    <h1>Từ vựng bài 1</h1>
+    <button class="click" id="nextButton3">Click me</button>
+    <button class="click" id="resetButton3">reset</button>
+    <p id="name3"></p>
+    <h1>Từ vựng bài 2</h1>
+    <button class="click" id="nextButton4">Click me</button>
+    <button class="click" id="resetButton4">reset</button>
+    <p id="name4"></p>
+
     <script>
         const textRoman=[
         'a','i','u','e','o'
@@ -94,6 +103,15 @@
         ,'わ','を','ん'
     ]
     
+    const textRoman3=[
+        'tôi','anh/chị (bạn)','người kia','vị kia','thầy/cô','giáo viên','học sinh','nhân viên công ty',
+        'nhân viên ngân hàng','bác sĩ','nhà nghiên cứu','đại học','bệnh viện','ai','vị nào',
+        'tuổi','mấy tuổi','mấy tuổi(lịch sự)'
+    ];
+    const textRoman4=[
+        'cái này','cái kia','cái đó','sách','từ điển','tạp chí','báo','vở','sổ tay','danh thiếp','thẻ tín dụng','bút chì','bút bi','bút chì kim','chìa khóa','đồng hồ',
+        'ô (dù)','cặp sách','tivi','radio','máy ảnh','máy vi tính','ô tô','bàn','ghế','sô cô la','cà phê','quà','gì,cái gì'
+    ]
     let selectedWords = []; 
     let completed = false; 
 
@@ -204,7 +222,79 @@
         completed2 = false; 
         randomWordParagraph2.textContent = ""; 
     });
-    
+    let selectedWords3 = []; 
+    let completed3 = false; 
+
+    function getRandomElement3(array) {
+        const randomIndex3 = Math.floor(Math.random() * array.length);
+        return array[randomIndex3];
+    }
+
+    function isWordSelected3(word) {
+        return selectedWords3.includes(word);
+    }
+
+    const nextButton3 = document.getElementById('nextButton3');
+    const resetButton3 = document.getElementById('resetButton3');
+    const randomWordParagraph3 = document.getElementById('name3');
+
+    nextButton3.addEventListener('click', function() {
+        if (completed3) {
+            randomWordParagraph3.textContent = "Completed";
+            return;
+        }
+        let randomElement3 = getRandomElement(textRoman3);
+        while (isWordSelected3(randomElement3)) {
+            randomElement3 = getRandomElement(textRoman3);
+        }
+        selectedWords3.push(randomElement3);
+        randomWordParagraph3.textContent = randomElement3;
+        if (selectedWords3.length === textRoman3.length) {
+            completed3 = true;
+        }
+    });
+    resetButton3.addEventListener('click', function() {
+        selectedWords3 = []; 
+        completed3 = false; 
+        randomWordParagraph3.textContent = ""; 
+    });
+    // bai4
+    let selectedWords4 = []; 
+    let completed4 = false; 
+
+    function getRandomElement4(array) {
+        const randomIndex4 = Math.floor(Math.random() * array.length);
+        return array[randomIndex4];
+    }
+
+    function isWordSelected4(word) {
+        return selectedWords4.includes(word);
+    }
+
+    const nextButton4 = document.getElementById('nextButton4');
+    const resetButton4 = document.getElementById('resetButton4');
+    const randomWordParagraph4 = document.getElementById('name4');
+
+    nextButton4.addEventListener('click', function() {
+        if (completed4) {
+            randomWordParagraph4.textContent = "Completed";
+            return;
+        }
+        let randomElement4 = getRandomElement(textRoman4);
+        while (isWordSelected4(randomElement4)) {
+            randomElement4 = getRandomElement(textRoman4);
+        }
+        selectedWords4.push(randomElement4);
+        randomWordParagraph4.textContent = randomElement4;
+        if (selectedWords4.length === textRoman4.length) {
+            completed4 = true;
+        }
+    });
+    resetButton4.addEventListener('click', function() {
+        selectedWords4 = []; 
+        completed4 = false; 
+        randomWordParagraph4.textContent = ""; 
+    });
     </script>
 </body>
 </html>
